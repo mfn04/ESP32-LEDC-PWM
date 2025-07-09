@@ -3,10 +3,11 @@
 #include "esp_task.h"
 #include "esp_log.h"
 #include "math.h"
+#include "driver/spi_master.h"
 
-#define RESOLUTION LEDC_TIMER_12_BIT
+#define RESOLUTION LEDC_TIMER_16_BIT
 #define CHANNEL LEDC_CHANNEL_0
-#define SPEED_MODE LEDC_LOW_SPEED_MODE
+#define SPEED_MODE LEDC_HIGH_SPEED_MODE
 #define PIN GPIO_NUM_26
 #define MAX_DUTY pow(2,RESOLUTION)
 
@@ -20,9 +21,9 @@ void app_main() {
     float curr_duty = 0.05;
 
     ledc_timer_config_t timer_conf = {
-        .freq_hz = 100,
+        .freq_hz = 120,
         .duty_resolution = RESOLUTION,
-        .clk_cfg = LEDC_REF_TICK,
+        .clk_cfg = LEDC_APB_CLK,
         .speed_mode = SPEED_MODE,
         .timer_num = LEDC_TIMER_1
     };
