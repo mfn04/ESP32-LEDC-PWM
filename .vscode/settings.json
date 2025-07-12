@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "*.dbclient-js": "javascript",
-        "ledc.h": "c",
-        "spi_master.h": "c"
-    }
-}
